@@ -16,6 +16,8 @@ import {
     ModalBody,
     ModalCloseButton,
     Image,
+    useToast, 
+    useClipboard, 
 } from '@chakra-ui/react';
 import { Info, Star, CheckCircle, Percent, Mouse } from 'lucide-react';
 
@@ -31,9 +33,11 @@ interface clickerProps {
 function Clicker({maxClicks, discount, decrease, timeout} : clickerProps) {
   const [clicks, setClicks] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
   const progress = (clicks / maxClicks) * 100;
   const isComplete = clicks >= maxClicks;
+  const toast = useToast();
+
+  const { hasCopied, onCopy } = useClipboard("WHISTLER30");
 
   const handleCheekClick = () => {
     if (clicks < maxClicks) {
@@ -41,6 +45,18 @@ function Clicker({maxClicks, discount, decrease, timeout} : clickerProps) {
     }
   };
 
+  const handleUseClick = () => {
+    onCopy();
+    toast({
+        title: "Скопировано!",
+        description: "Промокод добавлен в буфер обмена.",
+        status: "success",
+        duration: 2000,
+        isClosable: false,
+        position: "top-right",
+    });
+    onClose();
+  }
   useEffect(() => {
         if (isComplete) return;
 
@@ -226,7 +242,7 @@ function Clicker({maxClicks, discount, decrease, timeout} : clickerProps) {
               color="white"
               borderRadius="xl"
               _hover={{ bg: "purple.500" }}
-              onClick={onClose}
+              onClick={handleUseClick}
             >
               Использовать сейчас
             </Button>
