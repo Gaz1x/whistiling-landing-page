@@ -12,7 +12,7 @@ function WriteBlock() {
           justify="space-between"
           gap={{base: 4, lg: 0}}
         >
-          <HeroContent />
+          <HeroContent price={1500} discount={30} validPromo='WHISTLER30'/>
           <HeroImage />
         </Flex>
       </Container>

@@ -1,29 +1,29 @@
 import {
   Box,
   Flex,
-  IconButton,
-  Collapse,
-  Link,
-  useDisclosure,
+  // IconButton,
+  // Collapse,
+  // Link,
+  // useDisclosure,
   Container,
   Image,
 } from '@chakra-ui/react';
-import { MapPin, Star, CircleHelp, Menu, X } from 'lucide-react';
+// import { MapPin, Star, CircleHelp, Menu, X } from 'lucide-react';
 
 import logo from './images/circleLogo.png';
 
-const links = [
-  { label: 'О мастер-классе', icon: MapPin, href: '#about' },
-  { label: 'Академия', icon: Star, href: '#academy' },
-  { label: 'FAQ', icon: CircleHelp, href: '#faq' },
-];
+// const links = [
+//   { label: 'О мастер-классе', icon: MapPin, href: '#about' },
+//   { label: 'Академия', icon: Star, href: '#academy' },
+//   { label: 'FAQ', icon: CircleHelp, href: '#faq' },
+// ];
 
-interface navbarProps {
-  pageActive: number;
-};
+// interface navbarProps {
+//   pageActive: number;
+// };
 
-function Navbar({pageActive}: navbarProps) {
-  const { isOpen, onToggle } = useDisclosure();
+function Navbar() {
+  // const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Container 
@@ -71,7 +71,7 @@ function Navbar({pageActive}: navbarProps) {
             align="center"
             flexShrink={0}
           >
-            {links.map((item, idx) => (
+            {/* {links.map((item, idx) => (
               <Link 
                 key={item.label} 
                 href={item.href} 
@@ -87,10 +87,10 @@ function Navbar({pageActive}: navbarProps) {
                 <item.icon size={16} />
                 {item.label}
               </Link>
-            ))}
+            ))} */}
           </Flex>
 
-          <IconButton
+          {/* <IconButton
             aria-label="Menu"
             icon={isOpen ? <X size={20} /> : <Menu size={20} />}
             variant="ghost"
@@ -98,10 +98,10 @@ function Navbar({pageActive}: navbarProps) {
             onClick={onToggle}
             display={{ base: 'flex', md: 'none' }}
             flexShrink={0}
-          />
+          /> */}
         </Flex>
 
-        <Collapse in={isOpen}>
+        {/* <Collapse in={isOpen}>
           <Box 
             pb={4} 
             display={{ base: 'block', md: 'none' }}
@@ -127,7 +127,7 @@ function Navbar({pageActive}: navbarProps) {
               </Link>
             ))}
           </Box>
-        </Collapse>
+        </Collapse> */}
       </Container>
     </Container>
   );
