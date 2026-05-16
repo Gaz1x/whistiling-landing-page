@@ -31,9 +31,9 @@ function Footer() {
                 <Flex direction={{ base: "column", md: "row" }} justify="space-between" gap={8}>       
                                         
                     <VStack align="start" gap={4}>
-                        <Text fontSize="2xl" fontWeight="bold" color="gray.800">
+                        {/* <Text fontSize="2xl" fontWeight="bold" color="gray.800">
                             Академия свиста
-                        </Text>
+                        </Text> */}
                         <Text fontSize="sm" color="gray.600" maxW="300px">
                             Обучаем искусству свиста двумя пальцами с 8 марта 2026 года. 
                             Более 7 выпускников по всей стране.

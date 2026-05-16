@@ -11,13 +11,10 @@ import {
 } from '@chakra-ui/react';
 import { Mic, MicOff, Info, Trophy } from 'lucide-react';
 
-interface WhistleLevelProps {
-  onLevelChange?: (level: string, db: number) => void;
-}
-
-const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
+const SoundMeter: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
-  const [decibels, setDecibels] = useState(0);
+  const [currentDecibels, setCurrentDecibels] = useState(0);
+  const [maxDecibels, setMaxDecibels] = useState(0);
   const [level, setLevel] = useState<'silent' | 'quiet' | 'normal' | 'loud' | 'legend'>('silent');
   
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -56,7 +53,6 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
     return colors[lvl];
   };
 
-  // Запуск анализа звука
   const startListening = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -69,8 +65,9 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
       microphoneRef.current.connect(analyserRef.current);
       
       setIsListening(true);
+      setMaxDecibels(0);
+      setLevel('silent');
       
-      // Запуск анализа
       analyzeAudio();
       
     } catch (err) {
@@ -84,7 +81,6 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
     }
   };
 
-  // Остановка анализа
   const stopListening = () => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
@@ -103,52 +99,47 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
     }
     
     setIsListening(false);
-    setDecibels(0);
-    setLevel('silent');
+    setCurrentDecibels(0);
   };
 
-  // Анализ аудио в реальном времени
   const analyzeAudio = () => {
     if (!analyserRef.current) return;
     
     const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
     analyserRef.current.getByteFrequencyData(dataArray);
     
-    // Вычисляем средний уровень громкости
     let sum = 0;
     for (let i = 0; i < dataArray.length; i++) {
       sum += dataArray[i];
     }
     const average = sum / dataArray.length;
     
-    // Конвертируем в дБ (примерно)
     const db = Math.round(20 * Math.log10(average / 255) + 90);
     const clampedDb = Math.max(0, Math.min(100, db));
     
-    setDecibels(clampedDb);
+    setCurrentDecibels(clampedDb);
     
-    const newLevel = getLevelByDecibels(clampedDb);
-    setLevel(newLevel);
+    setMaxDecibels(prev => (clampedDb > prev ? clampedDb : prev));
     
-    if (onLevelChange) {
-      onLevelChange(getLevelText(newLevel), clampedDb);
-    }
+    setMaxDecibels(prev => {
+      const newLevel = getLevelByDecibels(prev);
+      setLevel(newLevel);
+      return prev;
+    });
     
     animationFrameRef.current = requestAnimationFrame(analyzeAudio);
   };
 
-  // Очистка при размонтировании
   useEffect(() => {
     return () => {
       stopListening();
     };
   }, []);
 
-  // Генерация полосок индикатора
   const renderMeterBars = () => {
     const bars = [];
     const totalBars = 30;
-    const activeBars = Math.round((decibels / 100) * totalBars);
+    const activeBars = Math.round((maxDecibels / 100) * totalBars);
     
     for (let i = 0; i < totalBars; i++) {
       let barColor = 'gray.200';
@@ -185,25 +176,25 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
       mx="auto"
       position="relative"
     >
-      {/* Кнопка информации */}
       <Box position="absolute" top={4} right={4}>
         <Tooltip 
-          label="Измерь громкость своего свиста! Чем громче, тем лучше!"
-          placement="top"
-          bg="gray.800"
-          color="white"
+            hasArrow 
+            label="Свистни так, чтобы весь мир услышал!"
+            placement="bottom"
+            w="150px"
+            bg="white"
+            color="gray.400"
+            boxShadow="0 4px 20px rgba(0,0,0,0.08)"
         >
           <Icon as={Info} size={20} color="gray.400" cursor="pointer" />
         </Tooltip>
       </Box>
 
       <VStack gap={6}>
-        {/* Заголовок */}
         <Text fontSize="xl" fontWeight="bold" color="gray.800">
           Уровень свиста
         </Text>
 
-        {/* Кнопка микрофона */}
         <Box
           w="100px"
           h="100px"
@@ -229,23 +220,20 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
           {isListening ? 'Микрофон активен' : 'Включить микрофон'}
         </Text>
 
-        {/* Показатели дБ */}
         <Flex align="center" gap={2}>
           <Text fontSize="4xl" fontWeight="bold" color="gray.800">
-            {decibels}
+            {maxDecibels}
           </Text>
           <Text fontSize="lg" color="gray.600" fontWeight="medium">
-            дБ
+            дБ (макс.)
           </Text>
         </Flex>
 
-        {/* Индикатор уровня */}
         <Box position="relative" w="100%">
           <Flex justify="space-between" align="center" gap={1}>
             {renderMeterBars()}
           </Flex>
           
-          {/* Подписи под индикатором */}
           <Flex justify="space-between" mt={2} px={1}>
             <Text fontSize="xs" color="gray.500">Тихо</Text>
             <Text fontSize="xs" color="gray.500">Громко</Text>
@@ -253,7 +241,6 @@ const SoundMeter: React.FC<WhistleLevelProps> = ({ onLevelChange }) => {
           </Flex>
         </Box>
 
-        {/* Текущий уровень */}
         <Flex
           w="100%"
           bg={level === 'legend' || level === 'loud' ? "purple.50" : "gray.50"}
