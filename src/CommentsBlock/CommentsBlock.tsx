@@ -55,7 +55,7 @@ function CommentsBlock() {
   return (
     <Container maxW="container.xl" mb={0} position="relative">
       <Flex direction="column" align="center" mb={8}>
-        <Flex align="center" gap={{md: 3, base: 1}} mb={2} wrap="wrap" justify="center">
+        <Flex align="center" gap={{md: 3, base: 1}} mb={2} justify="center">
           <Image 
             src={paintSrc} 
             alt="Paint" 
