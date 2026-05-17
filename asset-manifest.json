@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/whistiling-landing-page/static/js/main.17fb2f29.js",
+    "main.js": "/whistiling-landing-page/static/js/main.8435dda9.js",
     "static/js/453.5a024b8c.chunk.js": "/whistiling-landing-page/static/js/453.5a024b8c.chunk.js",
     "static/media/circleLogo.png": "/whistiling-landing-page/static/media/circleLogo.57f29d8d93f3aca41627.png",
     "static/media/hero75.png": "/whistiling-landing-page/static/media/hero75.3898605fdbc5f1fd9031.png",
@@ -19,10 +19,10 @@
     "static/media/Nikita.jpg": "/whistiling-landing-page/static/media/Nikita.6475bca651731c1d268f.jpg",
     "static/media/footerCropped.png": "/whistiling-landing-page/static/media/footerCropped.8e75046fd802e3b86b03.png",
     "index.html": "/whistiling-landing-page/index.html",
-    "main.17fb2f29.js.map": "/whistiling-landing-page/static/js/main.17fb2f29.js.map",
+    "main.8435dda9.js.map": "/whistiling-landing-page/static/js/main.8435dda9.js.map",
     "453.5a024b8c.chunk.js.map": "/whistiling-landing-page/static/js/453.5a024b8c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.17fb2f29.js"
+    "static/js/main.8435dda9.js"
   ]
 }
