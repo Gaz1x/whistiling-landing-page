@@ -8,12 +8,14 @@ function HeroImage() {
   return (
     <Box 
       flex={{ base: '1', lg: '1.5' }} 
-      position="relative" 
       display="flex" 
       justifyContent="center" 
       alignItems="center"
       mt={{ base: 8, lg: 0 }}
       order={{ base: 1, lg: 2}}
+      data-aos="slide-left"
+      data-aos-easing="ease-in-out-back"
+      data-aos-duration="650"
     >
       <Box
         position="absolute"

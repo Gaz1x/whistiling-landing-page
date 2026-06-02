@@ -1,4 +1,4 @@
-import { Image, Container, Box, Flex, Text, Link, HStack, VStack, Divider, Icon } from "@chakra-ui/react";
+import { Image, Container, Box, Flex, Text, HStack, VStack, Divider, Icon } from "@chakra-ui/react";
 import { Phone, Mail, MapPin} from "lucide-react";
 import footerSrc from "./images/footerCropped.png";
 import fullLogoSrc from "./images/logo.jpg";

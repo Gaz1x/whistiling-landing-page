@@ -101,6 +101,7 @@ function CommentsBlock() {
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
           }}
+          data-aos="flip-down"
         >
           <Flex gap={6} px={2} pb={4}>
             {commentsData.map((comment) => (

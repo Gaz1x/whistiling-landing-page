@@ -145,7 +145,14 @@ function HeroContent({price, discount, validPromo}: contentProps) {
 
   return (
     <>
-    <Box flex={{ base: '1', lg: '1' }} pr={{ lg: 8 }} order={{ base :2, lg: 1}}>
+    <Box 
+      flex={{ base: '1', lg: '1' }} 
+      pr={{ lg: 8 }} 
+      order={{ base :2, lg: 1}}
+      data-aos="slide-right"
+      data-aos-easing="ease-in-out-back"
+      data-aos-duration="650"
+    >
       <Text 
         as="h1" 
         fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }} 

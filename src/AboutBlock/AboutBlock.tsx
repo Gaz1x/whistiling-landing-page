@@ -42,8 +42,8 @@ function AboutBlock() {
             </HStack>
             <Flex direction={{base: "column", md: "row"}}   justifyContent="center" gap={{base: 8, md: 10}} wrap="wrap">
                 {
-                    aboutData.map((value) => {
-                    return ( <AboutCard icon={value.icon} title={value.title} text={value.text} color={value.color}/> )
+                    aboutData.map((value, idx) => {
+                    return ( <AboutCard icon={value.icon} title={value.title} text={value.text} color={value.color} id={idx}/> )
                     })
                 }
             </Flex>

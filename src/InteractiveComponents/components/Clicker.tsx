@@ -81,6 +81,8 @@ function Clicker({maxClicks, discount, decrease, timeout} : clickerProps) {
       w="400px"
       mx="auto"
       position="relative"
+      data-aos="fade"
+      data-aos-duration="500"
     >
       <Box display="flex" justifyContent="end">
         <Tooltip 

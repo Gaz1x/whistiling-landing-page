@@ -13,3 +13,4 @@ npm run build
 1. ChakraUI - компоненты ``` npm i @chakra-ui/react @emotion/react @emotion/styled ```
 2. Web Audio Api - работа с микрофоном
 3. Lucide - иконки ```npm install lucide-react```
+4. AnimateOnScroll - анимация при прокрутке ```npm install --save aos@next``` ```npm install --save-dev @types/aos```

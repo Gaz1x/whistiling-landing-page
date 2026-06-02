@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   Text,
-  Button,
   Icon,
   VStack,
   Tooltip,
@@ -175,6 +174,7 @@ const SoundMeter: React.FC = () => {
       w="400px"
       mx="auto"
       position="relative"
+      data-aos="zoom-in"
     >
       <Box position="absolute" top={4} right={4}>
         <Tooltip 

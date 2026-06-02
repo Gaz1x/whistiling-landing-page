@@ -4,11 +4,12 @@ import { LucideIcon } from 'lucide-react';
 interface cardProps{ 
     icon: LucideIcon;
     title: string;
-    text: string
-    color: string
+    text: string;
+    color: string;
+    id: number;
 }
 
-function AboutCard({icon: IconComponent, title, text, color}: cardProps) {
+function AboutCard({icon: IconComponent, title, text, color, id}: cardProps) {
 
     return (
         <>
@@ -20,6 +21,8 @@ function AboutCard({icon: IconComponent, title, text, color}: cardProps) {
             w={{ md: "200px", base: "200px"}}
             // h={{ md: "200px", base: "200px"}}
             textAlign="center"
+            data-aos="slide-down"
+            data-aos-delay={`${50 * id}`}
             >
             <Icon as={IconComponent} boxSize={{md: 8, base: 8}} color={color}/>
             <Text fontSize={{md: "2xl", base: "2xl"}} fontWeight="bold" color="gray.800">
