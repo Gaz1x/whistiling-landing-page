@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/whistiling-landing-page/static/css/main.3f808800.css",
-    "main.js": "/whistiling-landing-page/static/js/main.1c16ed6b.js",
+    "main.js": "/whistiling-landing-page/static/js/main.b89f4375.js",
     "static/js/453.5a024b8c.chunk.js": "/whistiling-landing-page/static/js/453.5a024b8c.chunk.js",
     "static/media/circleLogo.png": "/whistiling-landing-page/static/media/circleLogo.57f29d8d93f3aca41627.png",
     "static/media/hero75.png": "/whistiling-landing-page/static/media/hero75.3898605fdbc5f1fd9031.png",
@@ -21,11 +21,11 @@
     "static/media/footerCropped.png": "/whistiling-landing-page/static/media/footerCropped.8e75046fd802e3b86b03.png",
     "index.html": "/whistiling-landing-page/index.html",
     "main.3f808800.css.map": "/whistiling-landing-page/static/css/main.3f808800.css.map",
-    "main.1c16ed6b.js.map": "/whistiling-landing-page/static/js/main.1c16ed6b.js.map",
+    "main.b89f4375.js.map": "/whistiling-landing-page/static/js/main.b89f4375.js.map",
     "453.5a024b8c.chunk.js.map": "/whistiling-landing-page/static/js/453.5a024b8c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3f808800.css",
-    "static/js/main.1c16ed6b.js"
+    "static/js/main.b89f4375.js"
   ]
 }
