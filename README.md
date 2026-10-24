@@ -9,7 +9,6 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Chakra UI](https://img.shields.io/badge/Chakra_UI-2-319795?style=for-the-badge&logo=chakra-ui&logoColor=white)](https://chakra-ui.com/)
-[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](#-лицензия)
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-открыть_сайт-e53e3e?style=for-the-badge)](https://Gaz1x.github.io/whistiling-landing-page)
 
@@ -145,12 +144,6 @@ whistling-landing-page/
 - **WriteBlock** — `HeroContent`, `HeroImage`, `StatsCard` + два модальных окна (регистрация с валидацией → оплата с промокодом)
 - **InteractiveComponents** — `Clicker` (состояние прогресса 0/25/50/75/100) и `SoundMeter` (AudioContext + AnalyserNode)
 - **CommentsBlock** — данные отзывов вынесены в `commentsData.tsx`
-
----
-
-## 📄 Лицензия
-
-Распространяется по лицензии [MIT](LICENSE).
 
 ---
 
